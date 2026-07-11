@@ -81,7 +81,7 @@ def dashboard():
             if file.filename.endswith(".pdf"):
                 try:
                   
-                    pdf_reader=PyPDF2.PdfFileReader(file)
+                    pdf_reader=PyPDF2.PdfReader(file)
                     text=""
                     for page in pdf_reader.pages:
                         text+=page.extract_text() or ""
