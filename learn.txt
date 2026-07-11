@@ -1,0 +1,23 @@
+venv
+virtual environment
+isolated box for our project
+by this our project can get all those packages that it needs without sharing with other projects on computer
+to create it -> python -m venv venv
+to activate it-> .\venv\Scripts\Activate.ps1
+
+pip install flask , openai , PyPDF2 , sqlalchemy , pymysql, python-docx
+PyPDF2 -> to read file uploaded by user
+sqlchemy -> to work with databases easily , no need to write raw sql code and directly use python code to connect
+pymysql-> to connect with tidb database
+openai -> to connect with chatgpt 
+
+
+1) setup 
+2) database connection -tidb database connection using create_engine and sqlalchemy
+3) create html pages
+4) setup flask (app.py) again 
+import libraries render_template , redirect , session , reques
+render_template->  use to display html pages
+request-> to receive data from user's browser
+redirect-> send user from one url to another url
+session-> stores information of a user between diff pages

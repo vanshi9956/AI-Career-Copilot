@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>
+    Welcome {{user}} 
+    <!-- {{user}} means whatever name is passed through api will be shown here like welcome vanshika -->
+</h2>
+<div class="card">
+    <h2>
+        Resume Analyzer
+    </h2>
+    <form method="POST" enctype="multipart/form-data">
+        <textarea name="resume" placeholder="Paste your resume here"></textarea>
+        <p>
+            OR Upload File
+        </p>
+        <input type="file" name="file">
+        <input type="text" name="role" placeholder="what do you want to become (eg. Backened Engineer)"required>
+        <button type="submit">Analyze</button>
+
+    </form>
+
+
+</div>
+{% if result %}
+<div class="red">
+    {% if result.get("error") %}
+    <p style="color:red">
+        Error: {{result.get("error")}}
+        
+
+
+    </p>
+    {% endif %}
+    <!-- if error doesnot come we have to show all things to user to give the feedback on their resume -->
+
+    <h3>Skills</h3>
+        <ul>
+            {% for s in result.get("skills" ,[])%}
+            <li>
+                {{s}}
+            </li>
+            {% endfor %}
+        </ul>
+
+    <h3>Missing Skills</h3>
+        <ul>
+            {% for s in result.get("missing_skills" ,[])%}
+            <li>
+                {{s}}
+            </li>
+            {% endfor %}
+        </ul>
+    <h3>Roadmap</h3>
+        <ul>
+            {% for s in result.get("roadmap" ,[])%}
+            <li>
+                {{s}}
+            </li>
+            {% endfor %}
+        </ul>
+    
+    <h3>Interview Questions</h3>
+        <ul>
+            {% for s in result.get("interview_questions" ,[])%}
+            <li>
+                {{s}}
+            </li>
+            {% endfor %}
+        </ul>
+
+
+</div>
+{% endif %}
+{% endblock %}
