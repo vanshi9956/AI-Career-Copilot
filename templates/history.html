@@ -2,13 +2,13 @@
 
 {% block content %}
 <h2> Your History</h2>
-{% for r in reports %}
+{% for r in report %}
 <div class="card">
     <p> <strong>Resume Preview: </strong></p>
-    <p>{{r.resume_text[:150]}}</p>
+    <p>{{r.resume[:150]}}</p>
     <h3>Skills</h3>
         <ul>
-            {% for s in result.get("skills" ,[])%}
+            {% for s in r.result.get("skills" ,[])%}
             <li>
                 {{s}}
             </li>
@@ -17,7 +17,7 @@
 
     <h3>Missing Skills</h3>
         <ul>
-            {% for s in result.get("missing_skills" ,[])%}
+            {% for s in r.result.get("missing_skills" ,[])%}
             <li>
                 {{s}}
             </li>
@@ -25,7 +25,7 @@
         </ul>
     <h3>Roadmap</h3>
         <ul>
-            {% for s in result.get("Roadmap" ,[])%}
+            {% for s in r.result.get("Roadmap" ,[])%}
             <li>
                 {{s}}
             </li>
@@ -34,7 +34,7 @@
     
     <h3>Interview Questions</h3>
         <ul>
-            {% for s in result.get("interview_questions" ,[])%}
+            {% for s in r.result.get("interview_questions" ,[])%}
             <li>
                 {{s}}
             </li>
